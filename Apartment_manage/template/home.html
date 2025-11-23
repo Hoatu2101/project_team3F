@@ -1,0 +1,109 @@
+{% extends 'layout/base.html' %}
+{% block content %}
+<div id="heroCarousel" class="carousel slide" data-bs-ride="carousel">
+    <div class="carousel-inner">
+        <!-- Ảnh banner đầu tiên -->
+        <div class="carousel-item active">
+            <img src="https://luxurydecor.vn/wp-content/uploads/2019/12/thiet-ke-noi-that-chung-cu-2-phong-ngu-6.jpg" class="d-block w-100" alt="Banner 1">
+        </div>
+
+        <!-- Ảnh banner thứ hai -->
+        <div class="carousel-item">
+            <img src="https://luxurydecor.vn/wp-content/uploads/2019/12/thiet-ke-noi-that-chung-cu-2-phong-ngu-6.jpg" class="d-block w-100" alt="Banner 2">
+        </div>
+
+        <!-- Thêm ảnh khác nếu cần -->
+        <div class="carousel-item">
+            <img src="https://gotrangtri.vn/wp-content/uploads/2021/04/thiet-ke-noi-that-chung-cu-bia.jpg" class="d-block w-100" alt="Banner 3">
+        </div>
+    </div>
+
+    <!-- Nút điều hướng -->
+    <button class="carousel-control-prev" type="button" data-bs-target="#heroCarousel" data-bs-slide="prev">
+        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Previous</span>
+    </button>
+    <button class="carousel-control-next" type="button" data-bs-target="#heroCarousel" data-bs-slide="next">
+        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Next</span>
+    </button>
+</div>
+
+<div class="filter-bar-container">
+    <form action="/index" method="get" class="filter-form">
+
+        <div class="input-group search-input-group">
+            <input type="text" name="q" class="form-control"
+                   placeholder="Tìm kiếm theo tên căn hộ..."
+                   value="{{ request.args.get('q', '') }}">
+            <button class="btn btn-primary" type="submit">
+                <i class="bi bi-search"></i>
+            </button>
+        </div>
+
+        <select name="price_filter" class="form-select filter-select">
+            <option value="">Lọc theo Giá thuê</option>
+            <option value="asc" {% if request.args.get('price_filter') == 'asc' %}selected{% endif %}>Giá thấp nhất</option>
+            <option value="desc" {% if request.args.get('price_filter') == 'desc' %}selected{% endif %}>Giá cao nhất</option>
+            <option value="5000000-15000000">5 - 15 triệu VND</option>
+            <option value="15000000-max">Trên 15 triệu VND</option>
+        </select>
+
+        <select name="area_filter" class="form-select filter-select">
+            <option value="">Lọc theo Diện tích</option>
+            <option value="0-50">Dưới 50m²</option>
+            <option value="50-80">50m² - 80m²</option>
+            <option value="80-max">Trên 80m²</option>
+        </select>
+
+    </form>
+</div>
+<hr>
+<div class="listings-container">
+    {% for p in apartment %}
+
+    <div class="listing-card">
+
+        <div class="listing-image-container">
+            <img src="{{ p.image_url }}" alt="{{ p.title }}" class="listing-image">
+
+            {% if p.is_vip %}
+            <span class="badge-vip">
+                <i class="bi bi-star-fill"></i> TIN VIP
+            </span>
+            {% endif %}
+        </div>
+
+        <div class="listing-content">
+            <h3 class="listing-title">
+                {{ p.title }}
+            </h3>
+
+            <div class="listing-details">
+                <span class="listing-price">{{ p.price }}</span>
+
+                <div class="listing-features">
+                    <span><i class="bi bi-rulers"></i> {{ p.area }}m²</span>
+                    <span><i class="bi bi-bed"></i> {{ p.bedrooms }}</span>
+                    <span><i class="bi bi-water"></i> {{ p.bathrooms }}</span>
+                </div>
+            </div>
+
+            <div class="listing-location">
+                <i class="bi bi-geo-alt-fill"></i> {{ p.location }}
+            </div>
+
+            <p class="listing-description">
+                {{ p.description_short }}
+            </p>
+        </div>
+    </div>
+    {% else %}
+
+    <div class="no-listings-found">
+        <h2>Không tìm thấy căn hộ nào.</h2>
+        <p>Vui lòng thử lại với các tiêu chí tìm kiếm khác.</p>
+    </div>
+    {% endfor %}
+
+</div> {% endblock %}

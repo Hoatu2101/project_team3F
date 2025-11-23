@@ -1,0 +1,39 @@
+{% extends 'layout/base.html' %}
+{% block content %}
+  <div class="main-container">
+    <div class="service-container">
+      <div class="service-item">
+        <i class="bi bi-receipt"></i>
+        <span>Thanh toán hóa đơn</span>
+      </div>
+      <div class="service-item">
+        <i class="bi bi-search"></i>
+        <span>Tìm kiếm hợp đồng thuê</span>
+      </div>
+      <div class="service-item">
+        <i class="bi bi-bell"></i>
+        <span>Xem thông báo</span>
+      </div>
+      <div class="service-item">
+        <i class="bi bi-book"></i>
+        <span>Xem quy định</span>
+      </div>
+    </div>
+      <div class="payment-summary-section">
+        <h3> Các Khoản Cần Thanh Toán</h3>
+            <div class="payment-empty-state">
+                <i class="bi bi-check-circle-fill"></i>
+                <p>Xin chúc mừng! Hiện tại bạn **không có** hóa đơn nào cần thanh toán.</p>
+                <p class="text-muted">Tất cả các khoản phí đã được giải quyết.</p>
+            </div>
+    </div>
+      <div class="notification-summary-section">
+    <h3> Thông Báo Mới Nhất</h3>
+        <div class="notification-empty-state">
+            <i class="bi bi-info-circle-fill"></i>
+            <p>Hiện tại bạn **không có** thông báo mới nào.</p>
+            <p class="text-muted">Tất cả các thông báo cũ đã được xem.</p>
+        </div>
+  </div>
+  </div>
+{% endblock %}
