@@ -1,14 +1,46 @@
-<div class="taskbar">
-    <a href="/home">
-        <i class="bi bi-house-door-fill"></i> Trang chủ
-    </a>
-    <a href="/index">
-        <i class="bi bi-grid-fill"></i> Tiện ích
-    </a>
-    <a href="#">
-        <i class="bi bi-person-circle"></i> Thông tin người dùng
-    </a>
-    <a href="#">
-        <i class="bi bi-box-arrow-in-right"></i> Đăng nhập
-    </a>
-</div>
+<nav class="navbar navbar-expand-lg navbar-dark bg-primary px-3">
+    <div class="container-fluid">
+
+        <!-- Logo / Brand -->
+        <a class="navbar-brand fw-bold" href="/home">
+            <i class="bi bi-building"></i> Apartment Manager
+        </a>
+
+        <!-- NÚT 3 GẠCH (MOBILE) -->
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarMenu">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <!-- MENU CHÍNH -->
+        <div class="collapse navbar-collapse" id="navbarMenu">
+
+            <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+                <li class="nav-item">
+                    <a class="nav-link" href="#">
+                        <i class="bi bi-person-circle"></i> Người dùng
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/home">
+                        <i class="bi bi-house-door-fill"></i> Trang chủ
+                    </a>
+                </li>
+
+                <li class="nav-item">
+                    <a class="nav-link" href="/index">
+                        <i class="bi bi-grid-fill"></i> Tiện ích
+                    </a>
+                </li>
+
+
+                <li class="nav-item">
+                    <a class="nav-link" href="#">
+                        <i class="bi bi-box-arrow-in-right"></i> Đăng nhập
+                    </a>
+                </li>
+
+            </ul>
+        </div>
+
+    </div>
+</nav>
